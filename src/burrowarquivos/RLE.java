@@ -27,11 +27,15 @@ public class RLE {
 		String x="";
 		int tmp;
 		for (int i = 0; i < y.length();) {
-			tmp=y.charAt(i+1)-'0';
-			while(tmp-->0) {
-				x+=y.charAt(i);
+			char ctmp = y.charAt(i++);
+			String nc = "";
+			while(i < y.length() && y.charAt(i) >= '0' && y.charAt(i) <= '9') {
+				nc += y.charAt(i++);
 			}
-			i=i+2;
+			tmp=Integer.parseInt(nc);
+			while(tmp-- > 0) {
+				x+=ctmp;
+			}
 		}
 		return x;
 	}
